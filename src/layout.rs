@@ -9,25 +9,22 @@ use crate::{math, CacheKey, CacheKeyFlags, Color};
 
 /// A laid out glyph
 #[derive(Clone, Debug)]
+#[repr(C)]
 pub struct LayoutGlyph {
+    /// Font id of the glyph
+    pub font_id: fontdb::ID,
     /// Start index of cluster in original line
     pub start: usize,
     /// End index of cluster in original line
     pub end: usize,
     /// Font size of the glyph
     pub font_size: f32,
-    /// Font id of the glyph
-    pub font_id: fontdb::ID,
-    /// Font id of the glyph
-    pub glyph_id: u16,
     /// X offset of hitbox
     pub x: f32,
     /// Y offset of hitbox
     pub y: f32,
     /// Width of hitbox
     pub w: f32,
-    /// Unicode BiDi embedding level, character is left-to-right if `level` is divisible by 2
-    pub level: unicode_bidi::Level,
     /// X offset in line
     ///
     /// If you are dealing with physical coordinates, use [`Self::physical`] to obtain a
@@ -52,6 +49,10 @@ pub struct LayoutGlyph {
     pub metadata: usize,
     /// [`CacheKeyFlags`]
     pub cache_key_flags: CacheKeyFlags,
+    /// Font id of the glyph
+    pub glyph_id: u16,
+    /// Unicode BiDi embedding level, character is left-to-right if `level` is divisible by 2
+    pub level: unicode_bidi::Level,
 }
 
 #[derive(Clone, Debug)]

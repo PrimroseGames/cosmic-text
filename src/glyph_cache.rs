@@ -12,6 +12,7 @@ bitflags::bitflags! {
 
 /// Key for building a glyph cache
 #[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+#[repr(C)]
 pub struct CacheKey {
     /// Font ID
     pub font_id: fontdb::ID,

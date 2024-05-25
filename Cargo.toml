@@ -28,6 +28,7 @@ ttf-parser = { version = "0.20.0", default-features = false }
 unicode-linebreak = "0.1.5"
 unicode-script = "0.5.5"
 unicode-segmentation = "1.10.1"
+env_logger = "0.11.3"
 
 [dependencies.unicode-bidi]
 version = "0.3.13"
@@ -64,8 +65,15 @@ criterion = { version = "0.5.1", default-features = false, features = [
     "cargo_bench_support",
 ] }
 
+[build-dependencies]
+csbindgen = "1.9.1"
+
 [profile.test]
 opt-level = 1
 
 [package.metadata.docs.rs]
 features = ["vi"]
+
+[lib]
+crate-type = ["cdylib"]
+
